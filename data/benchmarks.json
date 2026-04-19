@@ -1,0 +1,75 @@
+{
+  "benchmarks": [
+    {
+      "name": "TPC-H",
+      "category": "OLAP decision support benchmark",
+      "official_url": "https://www.tpc.org/tpch/",
+      "dataset_notes": "Public benchmark specification from TPC. Data generation follows dbgen/qgen tooling from the benchmark kit.",
+      "logicdb_assets": {
+        "paper_workload_id": "tpch_good17_phased_10000",
+        "paper_workload_role": "mainline_e2e",
+        "sample_workload": "data/workloads/tpch/tpch_good17_phased_10000.sample.jsonl",
+        "paper_workload_queries": 10000,
+        "sample_rows": 5,
+        "provenance_notes": "Aligned to the paper's TPC-H mainline decision: the good17 phased workload excludes T10 from the primary positive path and keeps the supported templates [1,2,4,5,6,7,8,9,11,12,13,14,15,17,19,20,22].",
+        "workload_fields": [
+          "qid",
+          "segment_id",
+          "template",
+          "seed",
+          "sql",
+          "synthetic_repeat",
+          "synthetic_instance_id"
+        ]
+      }
+    },
+    {
+      "name": "TPC-DS",
+      "category": "Decision support benchmark with complex retail schema",
+      "official_url": "https://www.tpc.org/tpcds/",
+      "dataset_notes": "Public benchmark specification from TPC. Query streams are derived from benchmark SQL templates and adapted into JSONL workloads.",
+      "logicdb_assets": {
+        "paper_workload_id": "llmindexadvisor_tpcds_2k_phase_drift_repeat2.duckdb_valid_templated",
+        "paper_workload_role": "cross_dataset_paired",
+        "sample_workload": "data/workloads/tpcds/llmindexadvisor_tpcds_2k_phase_drift_repeat2.duckdb_valid_templated.sample.jsonl",
+        "paper_workload_queries": 1990,
+        "sample_rows": 5,
+        "provenance_notes": "Aligned to the paper's paired TPC-DS run manifest and DuckDB baseline/LogicDB comparison for the repeat2 phase-drift workload.",
+        "workload_fields": [
+          "qid",
+          "segment_id",
+          "template",
+          "seed",
+          "sql",
+          "source",
+          "orig_segment_id",
+          "phase_id",
+          "instance_id"
+        ]
+      }
+    },
+    {
+      "name": "JOB",
+      "category": "Join Order Benchmark over IMDB-style schema",
+      "official_url": "https://github.com/gregrahn/join-order-benchmark",
+      "dataset_notes": "Based on the Join Order Benchmark query set. A convenient containerized preparation path is also documented in jo-bench.",
+      "logicdb_assets": {
+        "paper_workload_id": "job_workload.duckdb_valid_phased_1130",
+        "paper_workload_role": "cross_dataset_paired",
+        "sample_workload": "data/workloads/job/job_workload.duckdb_valid_phased_1130.sample.jsonl",
+        "paper_workload_queries": 1130,
+        "sample_rows": 5,
+        "provenance_notes": "Aligned to the paper's paired JOB phased-valid run manifest and reference baseline for the 1130-query workload.",
+        "workload_fields": [
+          "id",
+          "query",
+          "sql",
+          "template",
+          "phase",
+          "phase_pos",
+          "instance_id"
+        ]
+      }
+    }
+  ]
+}

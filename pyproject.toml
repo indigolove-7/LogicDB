@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "logicdb"
+version = "0.1.0"
+description = "LogicDB: an open-source research codebase for LLM-native analytical serving and OpenOps-style physical optimization."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+  {name = "LogicDB authors"},
+]
+dependencies = [
+  "duckdb>=1.0.0",
+  "openai>=1.30.0",
+  "pandas>=2.0.0",
+  "sqlglot>=24.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0.0",
+]
+retrieval = [
+  "faiss-cpu>=1.8.0",
+]
+system = [
+  "psutil>=5.9.0",
+]
+
+[project.scripts]
+logicdb = "logicdb.cli.main:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
